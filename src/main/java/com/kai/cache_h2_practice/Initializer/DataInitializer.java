@@ -1,0 +1,22 @@
+package com.kai.cache_h2_practice.Initializer;
+
+import com.kai.cache_h2_practice.repositories.UserRepository;
+import com.kai.cache_h2_practice.models.User;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
+
+@Component
+public class DataInitializer implements CommandLineRunner {
+    private final UserRepository userRepository;
+
+    public DataInitializer(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+    @Override
+    public void run(String... args) {
+        userRepository.save(User.builder().username("user1").build());
+        userRepository.save(User.builder().username("user2").build());
+        userRepository.save(User.builder().username("user3").build());
+    }
+}
