@@ -17,6 +17,8 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
+//    value 為緩存名稱，key 為緩存的 key，cacheManager 為緩存管理器
+//    我們可以在不同德地方藉由使用 緩存名稱 來指定使用哪個緩存，例如在 CacheEvictScheduler.java 中就指定時間到了要將緩存名稱為 users 的緩存清除
     @Cacheable(value = "users", key = "#id", cacheManager = "cacheManager")
     public User getUserById(Long id) {
         // 模擬延遲以驗證緩存效果
